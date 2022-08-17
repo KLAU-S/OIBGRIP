@@ -1,8 +1,63 @@
-<p>Are you sure you want to delete "{{item}}"?</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{%load static%}
+<style>
 
-<a href="{% url 'list' %}" >Cancel</a>
+	.p{
+		position: relative;
+		color: #fff;
+		font-size: 24px;
+		font-weight: 600;
+		letter-spacing: 1px;
+		margin-bottom: 40px;
+	}
+	input{
+		color: white;
+		width: 100%;
+		padding: 8px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border:  red 2px solid;
+		border-radius: 35px;
+		background-color: transparent;
+	}
 
-<form method="POST" action="">
-	{% csrf_token %}
-	<input type="submit" name="Confirm">
-</form>
+	input::placeholder {
+	  color : white;
+	}
+
+
+	.submit{
+		background-color: #6BA3E8;
+		
+	}
+
+	.center-column{
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width:600px;
+		margin: 20px auto;
+		padding:20px;
+		border-radius: 35px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+		backdrop-filter: blur(3px) saturate(180%);
+		-webkit-backdrop-filter: blur(5px) saturate(180%);
+		background-color: rgba(17, 25, 40, 0.75);
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.125);
+	}
+
+</style>
+<body style="background-image: url('{%static 'images/1.jpg'%}');">
+<div class="center-column">
+	<p style="color:white">Are you sure you want to delete the task "{{item}}" ?</p>
+		<form method="POST" action="">
+			{% csrf_token %}
+			<input type="submit" class="button_active" formaction="{% url 'list' %}" value="Cancel">
+			<input type="submit" value="Delete">
+		</form>
+	</form>
+</div>
+</body>
+
