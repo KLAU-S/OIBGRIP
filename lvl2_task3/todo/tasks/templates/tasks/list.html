@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 {%load static%}
 <style>
+
 
 	.both{
 		position: fixed;
@@ -60,13 +64,35 @@
 		border-radius: 35px;
 		background-color: transparent;
 	}
+
+	article {
+		font-size: 2vmin;
+		font-family: 'Aboreto', cursive;
+		background: linear-gradient(
+			to right, 
+			hsl(98 100% 62%), 
+			hsl(204 100% 59%)
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-align: center;
+	}
+
+	h1 {
+		font-weight: medium;
+		font-size: 5vmin;
+		line-height: 1.1;
+}
 	
 
 </style>
 <div class="both">
 	<body style="background-image: url('{%static 'images/1.jpg'%}');">
 		<div class="center-column">
-			<h2 style="color:white">A Simple To do</h2>
+			<article>
+				<h1>A Simple To-Do</h1>
+				<p>developed using django by enayat.</p>
+			</article>
 			<form method="POST" action="/">
 				{% csrf_token %}
 				{{form.title}}
@@ -76,7 +102,7 @@
 
 		<div class="center-column">
 			<div class="todo-list">
-				<h4 style="color:white;">Your Tasks will Appear here !</h4>
+				<article class="task_list">Tasks will Appear here ! </article>
 				{% for task in tasks %}
 					<div class="item-row">
 						<a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
